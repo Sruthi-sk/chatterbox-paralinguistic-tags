@@ -1,0 +1,324 @@
+# Tag A/B tokenization report
+# std = ChatterboxTTS (704 BPE)
+# turbo = ChatterboxTurboTTS (GPT2 50257 + 19 tags)
+
+std   _baseline
+  text: 'She walked into the room and greeted everyone with a polite smile before sitting down.'
+  ids (51 tok): [295, 62, 2, 36, 56, 24, 49, 2, 228, 2, 42, 2, 89, 65, 2, 53, 2, 20, 46, 18, 188, 2, 18, 211, 110, 2, 103, 2, 14, 2, 139, 25, 60, 18, 2, 32, 26, 22, 64, 2, 67, 182, 46, 2, 32, 60, 242, 2, 17, 190, 9]
+
+turbo _baseline
+  text: 'She walked into the room and greeted everyone with a polite smile before sitting down.'
+  ids (16 tok): [3347, 6807, 656, 262, 2119, 290, 21272, 2506, 351, 257, 23507, 8212, 878, 5586, 866, 13]
+
+turbo [angry]
+  text: '[angry] I cannot believe you did that again, after everything I told you.'
+  ids (15 tok): [50257, 314, 2314, 1975, 345, 750, 326, 757, 11, 706, 2279, 314, 1297, 345, 13]
+
+std   [angry]
+  text: '[angry] I cannot believe you did that again, after everything I told you.'
+  ids (41 tok): [303, 43, 198, 38, 305, 2, 285, 2, 201, 149, 2, 67, 75, 18, 76, 2, 74, 2, 235, 2, 73, 2, 143, 137, 7, 2, 14, 19, 114, 2, 18, 211, 153, 2, 285, 2, 51, 79, 2, 74, 9]
+
+turbo [fear]
+  text: '[fear] Did you hear that noise coming from down the hallway?'
+  ids (12 tok): [50258, 7731, 345, 3285, 326, 7838, 2406, 422, 866, 262, 23959, 30]
+
+std   [fear]
+  text: '[fear] Did you hear that noise coming from down the hallway?'
+  ids (33 tok): [303, 132, 59, 305, 2, 280, 83, 2, 74, 2, 62, 59, 2, 73, 2, 95, 54, 18, 2, 170, 52, 2, 154, 2, 17, 190, 2, 42, 2, 21, 108, 180, 13]
+
+turbo [surprised]
+  text: '[surprised] Oh my goodness, I had absolutely no idea you would be here today.'
+  ids (16 tok): [50259, 3966, 616, 20437, 11, 314, 550, 5543, 645, 2126, 345, 561, 307, 994, 1909, 13]
+
+std   [surprised]
+  text: '[surprised] Oh my goodness, I had absolutely no idea you would be here today.'
+  ids (49 tok): [303, 32, 121, 29, 31, 54, 49, 305, 2, 291, 21, 2, 125, 2, 119, 207, 27, 164, 7, 2, 285, 2, 116, 2, 109, 123, 25, 96, 18, 70, 2, 95, 2, 208, 14, 2, 74, 2, 191, 2, 67, 2, 92, 18, 2, 51, 17, 88, 9]
+
+turbo [whispering]
+  text: 'She leaned closer and [whispering] told him the secret she had been keeping.'
+  ids (15 tok): [3347, 23831, 5699, 290, 220, 50260, 1297, 683, 262, 3200, 673, 550, 587, 5291, 13]
+
+std   [whispering]
+  text: 'She leaned closer and [whispering] told him the secret she had been keeping.'
+  ids (44 tok): [295, 62, 2, 64, 43, 49, 2, 16, 99, 32, 44, 2, 53, 2, 303, 72, 54, 205, 52, 305, 2, 51, 79, 2, 156, 2, 42, 2, 66, 16, 46, 33, 2, 118, 2, 116, 2, 237, 2, 93, 18, 29, 52, 9]
+
+turbo [dramatic]
+  text: '[dramatic] And that is when everything changed forever, in a single moment.'
+  ids (14 tok): [50262, 843, 326, 318, 618, 2279, 3421, 8097, 11, 287, 257, 2060, 2589, 13]
+
+std   [dramatic]
+  text: '[dramatic] And that is when everything changed forever, in a single moment.'
+  ids (44 tok): [303, 17, 31, 122, 48, 91, 305, 2, 277, 27, 17, 2, 73, 2, 54, 2, 199, 2, 18, 211, 153, 2, 71, 43, 20, 49, 2, 182, 46, 90, 7, 2, 41, 2, 14, 2, 32, 52, 64, 2, 26, 65, 86, 9]
+
+turbo [narration]
+  text: '[narration] The old house stood at the edge of the forest, silent and waiting.'
+  ids (16 tok): [50263, 383, 1468, 2156, 6204, 379, 262, 5743, 286, 262, 8222, 11, 10574, 290, 4953, 13]
+
+std   [narration]
+  text: '[narration] The old house stood at the edge of the forest, silent and waiting.'
+  ids (48 tok): [303, 27, 59, 31, 158, 305, 2, 296, 62, 2, 28, 79, 2, 21, 45, 66, 2, 32, 51, 207, 2, 48, 2, 42, 2, 49, 112, 2, 58, 2, 42, 2, 182, 46, 63, 7, 2, 32, 151, 86, 2, 53, 2, 36, 14, 60, 52, 9]
+
+turbo [crying]
+  text: "[crying] I just don't know what to do anymore, it all feels so hopeless."
+  ids (17 tok): [50264, 314, 655, 836, 470, 760, 644, 284, 466, 7471, 11, 340, 477, 5300, 523, 23292, 13]
+
+std   [crying]
+  text: "[crying] I just don't know what to do anymore, it all feels so hopeless."
+  ids (44 tok): [303, 16, 31, 38, 52, 305, 2, 285, 2, 226, 2, 17, 47, 4, 33, 2, 209, 2, 193, 2, 51, 2, 134, 2, 229, 244, 7, 2, 60, 2, 108, 2, 132, 249, 32, 2, 123, 2, 21, 28, 124, 25, 164, 9]
+
+turbo [happy]
+  text: '[happy] This is the best news I have heard all year long, thank you so much.'
+  ids (18 tok): [50265, 770, 318, 262, 1266, 1705, 314, 423, 2982, 477, 614, 890, 11, 5875, 345, 523, 881, 13]
+
+std   [happy]
+  text: '[happy] This is the best news I have heard all year long, thank you so much.'
+  ids (48 tok): [303, 102, 246, 38, 305, 2, 296, 94, 2, 54, 2, 42, 2, 15, 218, 2, 111, 36, 32, 2, 285, 2, 148, 2, 62, 177, 2, 108, 2, 220, 59, 2, 25, 222, 7, 2, 40, 43, 24, 2, 74, 2, 123, 2, 26, 34, 71, 9]
+
+turbo [sarcastic]
+  text: '[sarcastic] Oh sure, that sounds like a completely brilliant plan, no notes at all.'
+  ids (17 tok): [50266, 3966, 1654, 11, 326, 5238, 588, 257, 3190, 10457, 1410, 11, 645, 4710, 379, 477, 13]
+
+std   [sarcastic]
+  text: '[sarcastic] Oh sure, that sounds like a completely brilliant plan, no notes at all.'
+  ids (51 tok): [303, 32, 59, 16, 55, 78, 16, 305, 2, 291, 21, 2, 133, 46, 7, 2, 73, 2, 32, 189, 32, 2, 162, 2, 14, 2, 170, 29, 64, 136, 70, 2, 15, 101, 25, 75, 159, 2, 178, 43, 7, 2, 95, 2, 149, 61, 2, 48, 2, 108, 9]
+
+turbo [sigh]
+  text: 'She paused and then [sigh] continued reading the letter he had sent her.'
+  ids (15 tok): [3347, 24487, 290, 788, 220, 50268, 3767, 3555, 262, 3850, 339, 550, 1908, 607, 13]
+
+std   [sigh]
+  text: 'She paused and then [sigh] continued reading the letter he had sent her.'
+  ids (39 tok): [295, 62, 2, 29, 14, 142, 49, 2, 53, 2, 247, 2, 611, 2, 135, 33, 41, 34, 49, 2, 46, 68, 52, 2, 42, 2, 64, 33, 114, 2, 62, 2, 116, 2, 32, 86, 2, 92, 9]
+
+turbo [cough]
+  text: 'Excuse me for a moment [cough] the air in here is rather dusty.'
+  ids (16 tok): [40127, 1904, 502, 329, 257, 2589, 220, 50270, 262, 1633, 287, 994, 318, 2138, 36972, 13]
+
+std   [cough]
+  text: 'Excuse me for a moment [cough] the air in here is rather dusty.'
+  ids (37 tok): [281, 37, 16, 250, 2, 80, 2, 87, 2, 14, 2, 26, 65, 86, 2, 626, 2, 42, 2, 14, 98, 2, 41, 2, 92, 18, 2, 54, 2, 31, 14, 131, 2, 17, 163, 38, 9]
+
+turbo [groan]
+  text: 'He opened the package and [groan] realized it was the wrong item again.'
+  ids (15 tok): [1544, 4721, 262, 5301, 290, 220, 50271, 6939, 340, 373, 262, 2642, 2378, 757, 13]
+
+std   [groan]
+  text: 'He opened the package and [groan] realized it was the wrong item again.'
+  ids (40 tok): [284, 18, 2, 161, 50, 49, 2, 42, 2, 29, 157, 14, 112, 2, 53, 2, 621, 2, 46, 56, 22, 39, 49, 2, 60, 2, 81, 2, 42, 2, 36, 31, 222, 2, 60, 225, 2, 143, 137, 9]
+
+turbo [sniff]
+  text: 'She wiped her eyes and [sniff] tried to compose herself before speaking.'
+  ids (14 tok): [3347, 21122, 607, 2951, 290, 220, 50272, 3088, 284, 36664, 5223, 878, 5486, 13]
+
+std   [sniff]
+  text: 'She wiped her eyes and [sniff] tried to compose herself before speaking.'
+  ids (41 tok): [295, 62, 2, 85, 29, 49, 2, 92, 2, 18, 38, 61, 2, 53, 2, 624, 2, 33, 101, 49, 2, 51, 2, 170, 139, 66, 2, 92, 66, 25, 19, 2, 67, 182, 46, 2, 32, 124, 213, 52, 9]
+
+turbo [gasp]
+  text: 'She opened the letter and [gasp] read the news she had been dreading.'
+  ids (16 tok): [3347, 4721, 262, 3850, 290, 220, 50273, 1100, 262, 1705, 673, 550, 587, 15157, 278, 13]
+
+std   [gasp]
+  text: 'She opened the letter and [gasp] read the news she had been dreading.'
+  ids (37 tok): [295, 62, 2, 161, 50, 49, 2, 42, 2, 64, 33, 114, 2, 53, 2, 620, 2, 46, 68, 2, 42, 2, 111, 36, 32, 2, 118, 2, 116, 2, 237, 2, 17, 46, 68, 52, 9]
+
+turbo [chuckle]
+  text: "That's actually pretty funny [chuckle] I wasn't expecting that punchline at all."
+  ids (17 tok): [2504, 338, 1682, 2495, 8258, 220, 50274, 314, 2492, 470, 12451, 326, 10862, 1370, 379, 477, 13]
+
+std   [chuckle]
+  text: "That's actually pretty funny [chuckle] I wasn't expecting that punchline at all."
+  ids (52 tok): [296, 21, 48, 4, 32, 2, 77, 33, 34, 195, 2, 29, 46, 33, 210, 2, 19, 97, 27, 38, 2, 303, 71, 34, 197, 64, 305, 2, 285, 2, 81, 27, 4, 33, 2, 169, 124, 16, 242, 2, 73, 2, 29, 97, 71, 25, 203, 2, 48, 2, 108, 9]
+
+turbo [laugh]
+  text: 'He told the joke and everyone [laugh] filled the room with noise.'
+  ids (14 tok): [1544, 1297, 262, 9707, 290, 2506, 220, 50275, 5901, 262, 2119, 351, 7838, 13]
+
+std   [laugh]
+  text: 'He told the joke and everyone [laugh] filled the room with noise.'
+  ids (40 tok): [284, 18, 2, 51, 79, 2, 42, 2, 23, 28, 93, 2, 53, 2, 18, 211, 110, 2, 303, 25, 14, 34, 82, 305, 2, 19, 216, 49, 2, 42, 2, 89, 65, 2, 103, 2, 95, 54, 18, 9]
+
+turbo [clear throat]
+  text: 'Before the speech she [clear throat] stepped up to the microphone.'
+  ids (12 tok): [8421, 262, 4046, 673, 220, 50267, 10764, 510, 284, 262, 21822, 13]
+
+std   [clear throat]
+  text: 'Before the speech she [clear throat] stepped up to the microphone.'
+  ids (42 tok): [278, 18, 182, 46, 2, 42, 2, 32, 124, 18, 71, 2, 118, 2, 303, 16, 64, 59, 2, 40, 89, 48, 305, 2, 63, 18, 246, 49, 2, 152, 2, 51, 2, 42, 2, 26, 91, 89, 29, 21, 110, 9]
+
+turbo [shush]
+  text: '[shush] Keep your voice down, the baby is finally sleeping in the other room.'
+  ids (16 tok): [50269, 9175, 534, 3809, 866, 11, 262, 5156, 318, 3443, 11029, 287, 262, 584, 2119, 13]
+
+std   [shush]
+  text: '[shush] Keep your voice down, the baby is finally sleeping in the other room.'
+  ids (49 tok): [303, 120, 34, 120, 305, 2, 287, 18, 18, 29, 2, 223, 2, 35, 28, 91, 18, 2, 17, 190, 7, 2, 42, 2, 15, 109, 38, 2, 54, 2, 19, 41, 195, 2, 32, 64, 18, 29, 52, 2, 41, 2, 42, 2, 227, 2, 89, 65, 9]
+
+turbo [bark]
+  text: 'The dog ran outside and [bark] chased the mailman down the street.'
+  ids (17 tok): [464, 3290, 4966, 2354, 290, 685, 65, 668, 60, 26172, 262, 6920, 805, 866, 262, 4675, 13]
+
+std   [bark]
+  text: 'The dog ran outside and [bark] chased the mailman down the street.'
+  ids (38 tok): [296, 62, 2, 134, 20, 2, 31, 43, 2, 105, 32, 208, 2, 53, 2, 613, 2, 71, 55, 49, 2, 42, 2, 26, 14, 151, 176, 2, 17, 190, 2, 42, 2, 63, 46, 18, 33, 9]
+
+turbo [howl]
+  text: 'The wolves in the distance began to [howl] at the rising full moon.'
+  ids (17 tok): [464, 23214, 287, 262, 5253, 2540, 284, 685, 71, 4883, 60, 379, 262, 7396, 1336, 8824, 13]
+
+std   [howl]
+  text: 'The wolves in the distance began to [howl] at the rising full moon.'
+  ids (42 tok): [296, 62, 2, 36, 28, 25, 35, 61, 2, 41, 2, 42, 2, 17, 54, 33, 43, 117, 2, 67, 20, 43, 2, 51, 2, 614, 2, 48, 2, 42, 2, 31, 54, 52, 2, 19, 34, 84, 2, 115, 47, 9]
+
+turbo [meow]
+  text: 'The kitten looked up at me and [meow] demanded her evening dinner.'
+  ids (16 tok): [464, 42143, 3114, 510, 379, 502, 290, 685, 1326, 322, 60, 12284, 607, 6180, 8073, 13]
+
+std   [meow]
+  text: 'The kitten looked up at me and [meow] demanded her evening dinner.'
+  ids (38 tok): [296, 62, 2, 24, 60, 33, 50, 2, 99, 166, 49, 2, 152, 2, 48, 2, 80, 2, 53, 2, 615, 2, 126, 26, 53, 49, 2, 92, 2, 18, 200, 52, 2, 17, 41, 27, 44, 9]
+
+turbo [sneeze]
+  text: 'She stepped into the dusty attic and [sneeze] covered her nose immediately.'
+  ids (17 tok): [3347, 10764, 656, 262, 36972, 46113, 290, 685, 82, 21381, 2736, 60, 5017, 607, 9686, 3393, 13]
+
+std   [sneeze]
+  text: 'She stepped into the dusty attic and [sneeze] covered her nose immediately.'
+  ids (40 tok): [295, 62, 2, 63, 18, 246, 49, 2, 228, 2, 42, 2, 17, 163, 38, 2, 48, 78, 16, 2, 53, 2, 625, 2, 174, 90, 49, 2, 92, 2, 95, 66, 2, 106, 26, 49, 22, 186, 70, 9]
+
+turbo [snore]
+  text: 'He fell asleep on the couch and began to [snore] loudly through the movie.'
+  ids (18 tok): [1544, 3214, 16039, 319, 262, 18507, 290, 2540, 284, 685, 16184, 382, 60, 23112, 832, 262, 3807, 13]
+
+std   [snore]
+  text: 'He fell asleep on the couch and began to [snore] loudly through the movie.'
+  ids (44 tok): [284, 18, 2, 132, 84, 2, 55, 64, 18, 29, 2, 47, 2, 42, 2, 16, 45, 71, 2, 53, 2, 67, 20, 43, 2, 51, 2, 627, 2, 25, 45, 17, 70, 2, 40, 31, 202, 2, 42, 2, 115, 35, 236, 9]
+
+turbo [chew]
+  text: 'She took a bite of the apple and [chew] thoughtfully while reading the paper.'
+  ids (19 tok): [3347, 1718, 257, 13197, 286, 262, 17180, 290, 685, 2395, 86, 60, 1807, 2759, 981, 3555, 262, 3348, 13]
+
+std   [chew]
+  text: 'She took a bite of the apple and [chew] thoughtfully while reading the paper.'
+  ids (44 tok): [295, 62, 2, 51, 166, 2, 14, 2, 15, 60, 18, 2, 58, 2, 42, 2, 155, 29, 64, 2, 53, 2, 628, 2, 40, 45, 104, 19, 167, 70, 2, 230, 64, 2, 46, 68, 52, 2, 42, 2, 29, 155, 44, 9]
+
+turbo [sip]
+  text: 'She raised the cup of tea and [sip] slowly before setting it back down.'
+  ids (18 tok): [3347, 4376, 262, 6508, 286, 8887, 290, 685, 82, 541, 60, 6364, 878, 4634, 340, 736, 866, 13]
+
+std   [sip]
+  text: 'She raised the cup of tea and [sip] slowly before setting it back down.'
+  ids (42 tok): [295, 62, 2, 31, 14, 54, 49, 2, 42, 2, 16, 152, 2, 58, 2, 136, 14, 2, 53, 2, 629, 2, 32, 25, 69, 70, 2, 67, 182, 46, 2, 66, 33, 242, 2, 60, 2, 241, 2, 17, 190, 9]
+
+turbo [kiss]
+  text: 'He leaned close and [kiss] her gently on the forehead before leaving.'
+  ids (15 tok): [1544, 23831, 1969, 290, 685, 41304, 60, 607, 15165, 319, 262, 22645, 878, 4305, 13]
+
+std   [kiss]
+  text: 'He leaned close and [kiss] her gently on the forehead before leaving.'
+  ids (39 tok): [284, 18, 2, 64, 43, 49, 2, 16, 99, 66, 2, 53, 2, 631, 2, 92, 2, 20, 86, 70, 2, 47, 2, 42, 2, 182, 46, 62, 68, 2, 67, 182, 46, 2, 64, 14, 35, 52, 9]
+
+turbo [whistle]
+  text: 'He walked down the sunny street and [whistle] a cheerful little tune.'
+  ids (16 tok): [1544, 6807, 866, 262, 27737, 4675, 290, 685, 1929, 12535, 60, 257, 37999, 1310, 14009, 13]
+
+std   [whistle]
+  text: 'He walked down the sunny street and [whistle] a cheerful little tune.'
+  ids (44 tok): [284, 18, 2, 36, 56, 24, 49, 2, 17, 190, 2, 42, 2, 32, 97, 27, 38, 2, 63, 46, 18, 33, 2, 53, 2, 618, 2, 14, 2, 16, 62, 44, 19, 167, 2, 25, 60, 33, 64, 2, 33, 97, 18, 9]
+
+turbo [humming]
+  text: 'She worked on the puzzle and [humming] a song from her childhood.'
+  ids (16 tok): [3347, 3111, 319, 262, 15027, 290, 685, 17047, 2229, 60, 257, 3496, 422, 607, 9963, 13]
+
+std   [humming]
+  text: 'She worked on the puzzle and [humming] a song from her childhood.'
+  ids (37 tok): [295, 62, 2, 179, 24, 49, 2, 47, 2, 42, 2, 29, 34, 39, 39, 64, 2, 53, 2, 619, 2, 14, 2, 32, 222, 2, 154, 2, 92, 2, 71, 22, 79, 21, 28, 207, 9]
+
+turbo [giggle]
+  text: 'The children heard the silly joke and [giggle] at the dinner table.'
+  ids (16 tok): [464, 1751, 2982, 262, 14397, 9707, 290, 685, 70, 24082, 60, 379, 262, 8073, 3084, 13]
+
+std   [giggle]
+  text: 'The children heard the silly joke and [giggle] at the dinner table.'
+  ids (39 tok): [296, 62, 2, 71, 22, 79, 46, 27, 2, 62, 177, 2, 42, 2, 32, 151, 70, 2, 23, 28, 93, 2, 53, 2, 606, 2, 48, 2, 42, 2, 17, 41, 27, 44, 2, 33, 109, 64, 9]
+
+turbo [guffaw]
+  text: 'He read the absurd headline and [guffaw] nearly spilling his coffee everywhere.'
+  ids (17 tok): [1544, 1100, 262, 12986, 16534, 290, 685, 70, 1648, 707, 60, 3016, 45085, 465, 6891, 8347, 13]
+
+std   [guffaw]
+  text: 'He read the absurd headline and [guffaw] nearly spilling his coffee everywhere.'
+  ids (42 tok): [284, 18, 2, 46, 68, 2, 42, 2, 109, 32, 121, 17, 2, 62, 68, 25, 203, 2, 53, 2, 608, 2, 111, 59, 70, 2, 248, 216, 52, 2, 94, 2, 16, 58, 132, 18, 2, 18, 211, 72, 138, 9]
+
+turbo [cry]
+  text: 'The baby woke up in the night and began to [cry] in the dark.'
+  ids (17 tok): [464, 5156, 19092, 510, 287, 262, 1755, 290, 2540, 284, 685, 20470, 60, 287, 262, 3223, 13]
+
+std   [cry]
+  text: 'The baby woke up in the night and began to [cry] in the dark.'
+  ids (38 tok): [296, 62, 2, 15, 109, 38, 2, 36, 28, 93, 2, 152, 2, 41, 2, 42, 2, 27, 196, 2, 53, 2, 67, 20, 43, 2, 51, 2, 612, 2, 41, 2, 42, 2, 17, 59, 24, 9]
+
+turbo [mumble]
+  text: 'He stared at his feet and [mumble] something I could not quite understand.'
+  ids (17 tok): [1544, 18484, 379, 465, 3625, 290, 685, 76, 10344, 60, 1223, 314, 714, 407, 2407, 1833, 13]
+
+std   [mumble]
+  text: 'He stared at his feet and [mumble] something I could not quite understand.'
+  ids (37 tok): [284, 18, 2, 63, 127, 17, 2, 48, 2, 94, 2, 132, 18, 33, 2, 53, 2, 623, 2, 171, 153, 2, 285, 2, 221, 2, 149, 2, 194, 60, 18, 2, 97, 234, 63, 53, 9]
+
+turbo [whispering]
+  text: 'She leaned closer and [whispering] told him the secret she had been keeping.'
+  ids (15 tok): [3347, 23831, 5699, 290, 220, 50260, 1297, 683, 262, 3200, 673, 550, 587, 5291, 13]
+
+std   [whisper]
+  text: 'She leaned closer and [whisper] told him the secret she had been keeping.'
+  ids (39 tok): [295, 62, 2, 64, 43, 49, 2, 16, 99, 32, 44, 2, 53, 2, 622, 2, 51, 79, 2, 156, 2, 42, 2, 66, 16, 46, 33, 2, 118, 2, 116, 2, 237, 2, 93, 18, 29, 52, 9]
+
+turbo [laugh]
+  text: 'He told the joke and everyone [laugh] filled the room with noise.'
+  ids (14 tok): [1544, 1297, 262, 9707, 290, 2506, 220, 50275, 5901, 262, 2119, 351, 7838, 13]
+
+std   [laughter]
+  text: 'He told the joke and everyone [laughter] filled the room with noise.'
+  ids (35 tok): [284, 18, 2, 51, 79, 2, 42, 2, 23, 28, 93, 2, 53, 2, 18, 211, 110, 2, 607, 2, 19, 216, 49, 2, 42, 2, 89, 65, 2, 103, 2, 95, 54, 18, 9]
+
+turbo [sigh]
+  text: 'She paused and then [sigh] continued reading the letter.'
+  ids (11 tok): [3347, 24487, 290, 788, 220, 50268, 3767, 3555, 262, 3850, 13]
+
+std   [sigh]
+  text: 'She paused and then [sigh] continued reading the letter.'
+  ids (30 tok): [295, 62, 2, 29, 14, 142, 49, 2, 53, 2, 247, 2, 611, 2, 135, 33, 41, 34, 49, 2, 46, 68, 52, 2, 42, 2, 64, 33, 114, 9]
+
+turbo [cough]
+  text: 'Excuse me for a moment [cough] the air in here is rather dusty.'
+  ids (16 tok): [40127, 1904, 502, 329, 257, 2589, 220, 50270, 262, 1633, 287, 994, 318, 2138, 36972, 13]
+
+std   [cough]
+  text: 'Excuse me for a moment [cough] the air in here is rather dusty.'
+  ids (37 tok): [281, 37, 16, 250, 2, 80, 2, 87, 2, 14, 2, 26, 65, 86, 2, 626, 2, 42, 2, 14, 98, 2, 41, 2, 92, 18, 2, 54, 2, 31, 14, 131, 2, 17, 163, 38, 9]
+
+turbo [sniff]
+  text: 'She wiped her eyes and [sniff] tried to compose herself.'
+  ids (12 tok): [3347, 21122, 607, 2951, 290, 220, 50272, 3088, 284, 36664, 5223, 13]
+
+std   [sniff]
+  text: 'She wiped her eyes and [sniff] tried to compose herself.'
+  ids (32 tok): [295, 62, 2, 85, 29, 49, 2, 92, 2, 18, 38, 61, 2, 53, 2, 624, 2, 33, 101, 49, 2, 51, 2, 170, 139, 66, 2, 92, 66, 25, 19, 9]
+
+turbo [gasp]
+  text: 'She opened the letter and [gasp] read the news she had been dreading.'
+  ids (16 tok): [3347, 4721, 262, 3850, 290, 220, 50273, 1100, 262, 1705, 673, 550, 587, 15157, 278, 13]
+
+std   [gasp]
+  text: 'She opened the letter and [gasp] read the news she had been dreading.'
+  ids (37 tok): [295, 62, 2, 161, 50, 49, 2, 42, 2, 64, 33, 114, 2, 53, 2, 620, 2, 46, 68, 2, 42, 2, 111, 36, 32, 2, 118, 2, 116, 2, 237, 2, 17, 46, 68, 52, 9]
+
+turbo [groan]
+  text: 'He opened the package and [groan] realized it was the wrong item again.'
+  ids (15 tok): [1544, 4721, 262, 5301, 290, 220, 50271, 6939, 340, 373, 262, 2642, 2378, 757, 13]
+
+std   [groan]
+  text: 'He opened the package and [groan] realized it was the wrong item again.'
+  ids (40 tok): [284, 18, 2, 161, 50, 49, 2, 42, 2, 29, 157, 14, 112, 2, 53, 2, 621, 2, 46, 56, 22, 39, 49, 2, 60, 2, 81, 2, 42, 2, 36, 31, 222, 2, 60, 225, 2, 143, 137, 9]
+

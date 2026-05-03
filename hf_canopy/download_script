@@ -1,0 +1,11 @@
+pip install -U "huggingface_hub[hf_transfer]" hf_transfer
+
+
+HF_HUB_ENABLE_HF_TRANSFER=1 \
+  /home/sruthi/.venv/bin/hf download \
+  InternalCan/stage1-processed-with-audio-aligned \
+  --repo-type dataset \
+  --max-workers 8
+
+
+  /home/sruthi/.cache/huggingface/hub/datasets--InternalCan--stage1-processed-with-audio-aligned/snapshots/<hash>/data/train-00000-of-00104.parquet

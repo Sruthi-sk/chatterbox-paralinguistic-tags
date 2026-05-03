@@ -1,0 +1,18 @@
+{
+  "S_tag_presence": {
+    "n_entries": 50,
+    "n_conditions_run": 200
+  },
+  "S_cross_speaker": {
+    "n_entries": 50,
+    "n_conditions_run": 100
+  },
+  "S_neutral": {
+    "n_entries": 50,
+    "n_conditions_run": 100
+  },
+  "S_multi_tag": {
+    "n_entries": 50,
+    "n_conditions_run": 100
+  }
+}

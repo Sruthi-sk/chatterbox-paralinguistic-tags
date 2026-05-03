@@ -1,0 +1,87 @@
+/home/sruthi/chatterbox/.venv/bin/python -c "
+import pyarrow.parquet as pq, glob, re, collections, json
+from pathlib import Path
+
+snap='/home/sruthi/.cache/huggingface/hub/datasets--InternalCan--stage1-processed-with-audio-aligned/snapshots/5339999e2931ec74bbe2c845db6fc48383e1a549'
+shards = sorted(glob.glob(f'{snap}/data/train-*.parquet'))
+
+LOCALE_RE = re.compile(r'/([a-z]+_[a-z_\-]+)/(\d+)/')
+FILE_RE   = re.compile(r'/([0-9a-f]{8,14})_\d+_collection')
+
+voice_id_counts   = collections.Counter()   # voice_id -> n_rows
+locale_counts     = collections.Counter()
+gender_counts     = collections.Counter()
+voice_tag_counts  = collections.defaultdict(collections.Counter)  # voice_id -> Counter(tag)
+locale_tag_counts = collections.defaultdict(collections.Counter)
+neutral_by_voice  = collections.Counter()   # voice_id -> n_neutral_rows
+total = 0
+
+TAG_RE = re.compile(r'\[([^\[\]\n\r]{1,60})\]')
+
+for shard_idx, shard in enumerate(shards):
+    pf = pq.ParquetFile(shard)
+    cols = ['script_content', 'gcs_path', 'filename', 'gender', 'duration_seconds']
+    for rg in range(pf.num_row_groups):
+        tbl = pf.read_row_group(rg, columns=cols).to_pydict()
+        n = len(tbl['script_content'])
+        for i in range(n):
+            sc  = tbl['script_content'][i] or ''
+            gcs = tbl['gcs_path'][i] or ''
+            fname = tbl['filename'][i] or ''
+            gender = tbl['gender'][i] or ''
+            
+            lm = LOCALE_RE.search(gcs)
+            fm = FILE_RE.search(gcs)
+            locale   = lm.group(1) if lm else 'UNKNOWN'
+            voice_id = fm.group(1) if fm else (fname.split('_')[0] if fname else 'UNKNOWN')
+            
+            inline = {m.group(1).strip().lower() for m in TAG_RE.finditer(sc) if m.group(1).strip()}
+            
+            voice_id_counts[voice_id] += 1
+            locale_counts[locale]     += 1
+            gender_counts[gender]     += 1
+            
+            for t in inline:
+                voice_tag_counts[voice_id][t] += 1
+                locale_tag_counts[locale][t]  += 1
+            if not inline:
+                neutral_by_voice[voice_id] += 1
+            total += 1
+
+print(f'Total rows: {total}')
+print(f'Unique voice IDs: {len(voice_id_counts)}')
+print(f'Unique locales: {len(locale_counts)}')
+print()
+print('=== VOICE ID distribution (top 30) ===')
+print(f'{\"voice_id\":<20} {\"n_rows\":>8} {\"n_neutral\":>9} {\"n_tags\":>8}')
+for vid, n in voice_id_counts.most_common(30):
+    ntag = sum(voice_tag_counts[vid].values())
+    print(f'{vid:<20} {n:>8} {neutral_by_voice[vid]:>9} {ntag:>8}')
+
+print()
+print('=== LOCALE distribution ===')
+for loc, n in locale_counts.most_common():
+    print(f'  {loc:<55} {n:>7} rows')
+
+print()
+print('=== GENDER distribution ===')
+for g, n in gender_counts.most_common():
+    print(f'  {g:<30} {n:>7}')
+
+# Save corrected speaker map
+out = Path('/home/sruthi/chatterbox/analysis')
+with open(out / 'voice_id_stats.json', 'w') as f:
+    json.dump({
+        'total_rows': total,
+        'n_voice_ids': len(voice_id_counts),
+        'n_locales': len(locale_counts),
+        'voice_id_counts': dict(voice_id_counts),
+        'locale_counts': dict(locale_counts),
+        'gender_counts': dict(gender_counts),
+    }, f, indent=2)
+print('saved voice_id_stats.json')
+" 2>&1
+
+
+
+cd ~/chatterbox && .venv/bin/python analysis/verify_speakers.py --list 2>&1 | head -50
